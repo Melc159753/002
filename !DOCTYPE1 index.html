@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Estudos Fofinho</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        [class*="hover:"] {
+            transition: all 0.2s ease-in-out;
+        }
+        main::-webkit-scrollbar, aside > div::-webkit-scrollbar {
+            width: 8px;
+        }
+        aside > div::-webkit-scrollbar-track, main::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+        aside > div::-webkit-scrollbar-thumb, main::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        aside > div::-webkit-scrollbar-thumb:hover, main::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        #sidebar > div {
+             height: 100%;
+             overflow-y: auto;
+             padding-right: 8px;
+        }
+        .link-ativo {
+            background-color: rgb(251 207 232 / 0.5);
+            color: #ec4899;
+            font-weight: 700;
+            border-left: 4px solid #f472b6;
+        }
+        .link-inativo {
+            color: #64748b;
+        }
+        .content-panel:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgb(244, 114, 182, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="flex min-h-screen">
+        <aside id="sidebar" class="w-64 bg-white p-6 shadow-lg flex flex-col justify-between fixed lg:relative h-full transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out z-30">
+            <div>
+                <div class="flex items-center gap-2 mb-10">
+                    <div class="w-10 h-10 bg-pink-200 rounded-full flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-pink-500" viewBox="0 0 20 20" fill="currentColor"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 4a1 1 0 00-.527.92V17a1 1 0 001 1h14a1 1 0 001-1V7a1 1 0 00-.527-.92l-7-4zM10 18a1 1 0 01-1-1v-6a1 1 0 112 0v6a1 1 0 01-1 1zM9 8a1 1 0 012 0v2a1 1 0 11-2 0V8z" /></svg></div>
+                    <span class="text-xl font-bold text-slate-700">StudyCute</span>
+                </div>
+
+                <nav id="main-nav">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Estudo</h3>
+                    <ul>
+                        <li class="mb-2">
+                            <a href="#" data-target="content-inicio" class="nav-link flex items-center gap-3 px-4 py-2 rounded-lg"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" /></svg>Início</a>
+                        </li>
+                        <li class="mb-2">
+                            <div class="flex items-center gap-3 px-4 py-2 text-slate-500 font-semibold"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 16c1.255 0 2.443-.29 3.5-.804V4.804zM14.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 0114.5 16c1.255 0 2.443-.29 3.5-.804v-10A7.968 7.968 0 0014.5 4z" /></svg>Matérias</div>
+                            <ul class="pl-2 mt-2 space-y-2">
+                                <li><a href="#" data-target="content-med-lab" class="nav-link block p-2 rounded-lg text-sm bg-slate-100 hover:bg-pink-100/50 hover:text-pink-500 font-semibold transition-colors duration-150">Introdução à Medicina Laboratorial</a></li>
+                                <li><a href="#" data-target="content-anemias" class="nav-link block p-2 rounded-lg text-sm bg-slate-100 hover:bg-pink-100/50 hover:text-pink-500 font-semibold transition-colors duration-150">Anemias</a></li>
+                                <li><a href="#" data-target="content-leucocitos" class="nav-link block p-2 rounded-lg text-sm bg-slate-100 hover:bg-pink-100/50 hover:text-pink-500 font-semibold transition-colors duration-150">Leucócitos</a></li>
+                                <li><a href="#" data-target="content-hiperglicemias" class="nav-link block p-2 rounded-lg text-sm bg-slate-100 hover:bg-pink-100/50 hover:text-pink-500 font-semibold transition-colors duration-150">Hiperglicemias</a></li>
+                                <li><a href="#" data-target="content-dislipidemias" class="nav-link block p-2 rounded-lg text-sm bg-slate-100 hover:bg-pink-100/50 hover:text-pink-500 font-semibold transition-colors duration-150">Dislipidemias</a></li>
+                                <li><a href="#" data-target="content-hepaticas" class="nav-link block p-2 rounded-lg text-sm bg-slate-100 hover:bg-pink-100/50 hover:text-pink-500 font-semibold transition-colors duration-150">Disfunções Hepáticas</a></li>
+                                <li><a href="#" data-target="content-hepatites" class="nav-link block p-2 rounded-lg text-sm bg-slate-100 hover:bg-pink-100/50 hover:text-pink-500 font-semibold transition-colors duration-150">Hepatites</a></li>
+                                <li><a href="#" data-target="content-ist" class="nav-link block p-2 rounded-lg text-sm bg-slate-100 hover:bg-pink-100/50 hover:text-pink-500 font-semibold transition-colors duration-150">IST/HIV</a></li>
+                                <li><a href="#" data-target="content-inflamatorios" class="nav-link block p-2 rounded-lg text-sm bg-slate-100 hover:bg-pink-100/50 hover:text-pink-500 font-semibold transition-colors duration-150">Marcadores Inflamatórios e Doenças Autoimunes</a></li>
+                                <li><a href="#" data-target="content-viroses" class="nav-link block p-2 rounded-lg text-sm bg-slate-100 hover:bg-pink-100/50 hover:text-pink-500 font-semibold transition-colors duration-150">COVID, Dengue, Zika e Chikungunya</a></li>
+                                <li><a href="#" data-target="content-microbiologia" class="nav-link block p-2 rounded-lg text-sm bg-slate-100 hover:bg-pink-100/50 hover:text-pink-500 font-semibold transition-colors duration-150">Microbiologia</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden lg:hidden"></div>
+
+        <main class="flex-1 p-4 sm:p-6 lg:p-8 h-screen overflow-y-auto">
+            <header class="flex justify-between items-center mb-8">
+                <div class="flex items-center gap-4"><button id="menu-toggle" class="lg:hidden p-2 rounded-full hover:bg-slate-200"><span class="sr-only">Abrir menu</span><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg></button></div>
+                <div class="flex items-center gap-4"><button class="p-2 rounded-full hover:bg-slate-200" aria-label="Notificações"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg></button><img src="https://placehold.co/40x40/FFC0CB/4A5568?text=🐱" alt="Avatar do usuário" class="w-10 h-10 rounded-full ring-2 ring-offset-2 ring-pink-300"></div>
+            </header>
+
+            <div class="grid grid-cols-1 gap-6">
+                <article id="content-inicio" contenteditable="true" class="content-panel bg-white p-6 rounded-2xl shadow-sm text-slate-600 leading-relaxed space-y-4"><h2 class="text-2xl font-bold text-slate-700 mb-2">Bem-vinda ao seu Painel de Estudos! 💖</h2><p>Clique aqui para começar a editar! Você pode apagar este texto e escrever seus próprios resumos.</p></article>
+                <article id="content-med-lab" contenteditable="true" class="content-panel bg-white p-6 rounded-2xl shadow-sm text-slate-600 leading-relaxed space-y-4 hidden"><h2 class="text-2xl font-bold text-slate-700 mb-2">Introdução à Medicina Laboratorial</h2><p>Escreva suas anotações aqui...</p></article>
+                <article id="content-anemias" contenteditable="true" class="content-panel bg-white p-6 rounded-2xl shadow-sm text-slate-600 leading-relaxed space-y-4 hidden"><h2 class="text-2xl font-bold text-slate-700 mb-2">Anemias</h2><p>Escreva suas anotações aqui...</p></article>
+                <article id="content-leucocitos" contenteditable="true" class="content-panel bg-white p-6 rounded-2xl shadow-sm text-slate-600 leading-relaxed space-y-4 hidden"><h2 class="text-2xl font-bold text-slate-700 mb-2">Leucócitos</h2><p>Aqui está o seu texto original sobre o Leucograma. Sinta-se à vontade para editar e adicionar mais informações.</p></article>
+                <article id="content-hiperglicemias" contenteditable="true" class="content-panel bg-white p-6 rounded-2xl shadow-sm text-slate-600 leading-relaxed space-y-4 hidden"><h2 class="text-2xl font-bold text-slate-700 mb-2">Hiperglicemias</h2><p>Escreva suas anotações aqui...</p></article>
+                <article id="content-dislipidemias" contenteditable="true" class="content-panel bg-white p-6 rounded-2xl shadow-sm text-slate-600 leading-relaxed space-y-4 hidden"><h2 class="text-2xl font-bold text-slate-700 mb-2">Dislipidemias</h2><p>Escreva suas anotações aqui...</p></article>
+                <article id="content-hepaticas" contenteditable="true" class="content-panel bg-white p-6 rounded-2xl shadow-sm text-slate-600 leading-relaxed space-y-4 hidden"><h2 class="text-2xl font-bold text-slate-700 mb-2">Disfunções Hepáticas</h2><p>Escreva suas anotações aqui...</p></article>
+                <article id="content-hepatites" contenteditable="true" class="content-panel bg-white p-6 rounded-2xl shadow-sm text-slate-600 leading-relaxed space-y-4 hidden"><h2 class="text-2xl font-bold text-slate-700 mb-2">Hepatites</h2><p>Escreva suas anotações aqui...</p></article>
+                <article id="content-ist" contenteditable="true" class="content-panel bg-white p-6 rounded-2xl shadow-sm text-slate-600 leading-relaxed space-y-4 hidden"><h2 class="text-2xl font-bold text-slate-700 mb-2">IST/HIV</h2><p>Escreva suas anotações aqui...</p></article>
+                <article id="content-inflamatorios" contenteditable="true" class="content-panel bg-white p-6 rounded-2xl shadow-sm text-slate-600 leading-relaxed space-y-4 hidden"><h2 class="text-2xl font-bold text-slate-700 mb-2">Marcadores Inflamatórios e Doenças Autoimunes</h2><p>Escreva suas anotações aqui...</p></article>
+                <article id="content-viroses" contenteditable="true" class="content-panel bg-white p-6 rounded-2xl shadow-sm text-slate-600 leading-relaxed space-y-4 hidden"><h2 class="text-2xl font-bold text-slate-700 mb-2">COVID, Dengue, Zika e Chikungunya</h2><p>Escreva suas anotações aqui...</p></article>
+                <article id="content-microbiologia" contenteditable="true" class="content-panel bg-white p-6 rounded-2xl shadow-sm text-slate-600 leading-relaxed space-y-4 hidden"><h2 class="text-2xl font-bold text-slate-700 mb-2">Microbiologia</h2><p>Escreva suas anotações aqui...</p></article>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        function toggleMenu() { sidebar.classList.toggle('-translate-x-full'); overlay.classList.toggle('hidden'); }
+        menuToggle.addEventListener('click', (e) => { e.stopPropagation(); toggleMenu(); });
+        overlay.addEventListener('click', toggleMenu);
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const contentPanels = document.querySelectorAll('.content-panel');
+            const storagePrefix = 'studyCute-content-';
+
+            function salvarConteudo(panelId, content) {
+                localStorage.setItem(storagePrefix + panelId, content);
+            }
+
+            function carregarConteudo() {
+                contentPanels.forEach(panel => {
+                    const savedContent = localStorage.getItem(storagePrefix + panel.id);
+                    if (savedContent) {
+                        panel.innerHTML = savedContent;
+                    }
+                });
+            }
+
+            function setActiveLink(activeLink) {
+                navLinks.forEach(link => {
+                    link.classList.remove('link-ativo');
+                    link.classList.add('link-inativo');
+                });
+                if(activeLink) {
+                    activeLink.classList.add('link-ativo');
+                    activeLink.classList.remove('link-inativo');
+                }
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const targetId = link.getAttribute('data-target');
+                    contentPanels.forEach(panel => panel.classList.add('hidden'));
+                    const targetPanel = document.getElementById(targetId);
+                    if (targetPanel) {
+                        targetPanel.classList.remove('hidden');
+                    }
+                    setActiveLink(link);
+                });
+            });
+
+            contentPanels.forEach(panel => {
+                panel.addEventListener('input', () => {
+                    salvarConteudo(panel.id, panel.innerHTML);
+                });
+            });
+
+            carregarConteudo();
+
+            const initialLink = document.querySelector('.nav-link[data-target="content-inicio"]');
+            setActiveLink(initialLink);
+            
+            contentPanels.forEach(panel => {
+                if(panel.id !== 'content-inicio'){
+                   panel.classList.add('hidden');
+                } else {
+                   panel.classList.remove('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
